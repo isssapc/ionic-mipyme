@@ -1,14 +1,63 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Anuncios
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+
+  <ion-card *ngFor="let anuncio of anuncios">
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="anuncio.avatar_src">
+      </ion-avatar>
+      <h2>{{anuncio.titulo}}</h2>
+      <p>{{anuncio.fecha_publicacion}}</p>
+    </ion-item>
+
+    <img [src]="anuncio.img_src">
+
+    <ion-card-content text-center>
+      <p>{{anuncio.descripcion}}</p>
+      <h3>
+        <span style="text-decoration:line-through">$1,000.00</span>
+        <span>$900.00</span>
+      </h3>
+      <!-- <h3>{{anuncio.precio}}</h3> -->
+      <p>{{anuncio.categoria}}</p>
+
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+
 </ion-content>
