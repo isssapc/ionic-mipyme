@@ -1,0 +1,8 @@
+{
+  "name": "ionic-mipyme",
+  "app_id": "143f394f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
