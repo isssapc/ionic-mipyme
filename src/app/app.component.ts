@@ -2,15 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { EmpresaPage } from '../pages/empresa/empresa';
+//import { HomePage } from '../pages/home/home';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild('myNav') myNav: NavController;
 
-  rootPage: any = HomePage;
+  rootPage: any = "AnunciosPage";
 
   constructor(
     platform: Platform,
@@ -29,7 +29,7 @@ export class MyApp {
 
   openPage(page) {
     this.myNav.setRoot(page);
-    console.log("OpenPage");
+    //console.log("OpenPage");
 
 
   }
