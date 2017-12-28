@@ -27,7 +27,7 @@
     <ion-card-content text-center>
       <p>{{anuncio.descripcion}}</p>
       <h3>
-        <span style="text-decoration:line-through">$1,000.00</span>
+        <span style="text-decoration:line-through" class="text-danger">$1,000.00</span>
         <span>$900.00</span>
       </h3>
       <!-- <h3>{{anuncio.precio}}</h3> -->
@@ -35,7 +35,7 @@
 
     </ion-card-content>
 
-    <ion-row>
+    <!--     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
@@ -43,9 +43,9 @@
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+        <button ion-button icon-right clear small>          
+          <div>Agregar</div>
+          <ion-icon name="cart"></ion-icon>
         </button>
       </ion-col>
       <ion-col center text-center>
@@ -53,8 +53,14 @@
           11h ago
         </ion-note>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 
+    <div text-right>
+      <button ion-button icon-right clear small>
+        <div>Agregar</div>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </div>
   </ion-card>
 
 </ion-content>
