@@ -12,11 +12,11 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let anuncio of anuncios">
+  <ion-card *ngFor="let anuncio of anuncios|async">
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="anuncio.avatar_src">
+        <img [src]="anuncio.avatar_src||'assets/imgs/logo.png'">
       </ion-avatar>
       <h2>{{anuncio.titulo}}</h2>
       <p>{{anuncio.fecha_publicacion}}</p>
@@ -27,33 +27,13 @@
     <ion-card-content text-center>
       <p>{{anuncio.descripcion}}</p>
       <h3>
-        <span style="text-decoration:line-through" class="text-danger">$1,000.00</span>
-        <span>$900.00</span>
+        <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado}}}</span>
+        <span>{{anuncio.precio}}}</span>
       </h3>
       <!-- <h3>{{anuncio.precio}}</h3> -->
-      <p>{{anuncio.categoria}}</p>
+      <!-- <p>{{anuncio.categoria}}</p> -->
 
     </ion-card-content>
-
-    <!--     <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-right clear small>          
-          <div>Agregar</div>
-          <ion-icon name="cart"></ion-icon>
-        </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row> -->
 
     <div text-right>
       <button ion-button icon-right clear small>

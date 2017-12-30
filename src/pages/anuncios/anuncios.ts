@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AnuncioProvider } from '../../providers/anuncio/anuncio';
+import { Observable } from 'rxjs/Observable';
 
 
 @IonicPage()
@@ -9,7 +11,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AnunciosPage {
 
-  anuncios: any[] = [
+  anuncios: Observable<any[]>;/*  [
     {
       titulo: "Pants Deportivos",
       descripcion: "Alta resistencia e ideal para deportes",
@@ -37,13 +39,21 @@ export class AnunciosPage {
       categoria: "Promociones",
       avatar_src: "assets/imgs/logo.png"
     }
-  ];
+  ]; */
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private anuncioSrv: AnuncioProvider
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnunciosPage');
+
+    this.anuncios = this.anuncioSrv.getAnuncios();
+
+
   }
 
 }
