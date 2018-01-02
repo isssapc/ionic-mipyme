@@ -56,4 +56,10 @@ export class AnunciosPage {
 
   }
 
+  gotoPage(page) {
+    console.log("gotoPagePedidos");
+    
+    this.navCtrl.push(page);
+  }
+
 }

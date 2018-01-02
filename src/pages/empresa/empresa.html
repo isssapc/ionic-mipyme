@@ -14,7 +14,7 @@
 
   <ion-card>
 
-    <img src="assets/imgs/logo.png">
+    <!--  <img src="assets/imgs/logo.png"> -->
 
     <ion-card-content>
 
@@ -26,43 +26,19 @@
         {{empresa.descripcion}}
       </p>
       <div *ngFor="let direccion of empresa.direcciones">
-        <h2>
-          <ion-icon name="pin" item-start></ion-icon>
-          Ubicación
-          <p>{{direccion.calle}}, {{direccion.colonia}}, {{direccion.numero}}, {{direccion.cp}}, {{direccion.estado}}.</p>
-        </h2>
-        <h2 *ngFor="let telefono of direccion.telefonos">
-          <ion-icon name="call" item-start></ion-icon>
-          Teléfono:
-          <p>{{telefono.numero}}</p>
-        </h2>
-        <h2>
-          <ion-icon name="at" item-start></ion-icon>
-          E-mail:
-          <p>{{direccion.email}}</p>
-        </h2>
+        <div>
+          <!-- <ion-icon name="pin" item-start></ion-icon> -->
+          <p>Ubicación: {{direccion.calle}}, {{direccion.colonia}}, {{direccion.numero}}, {{direccion.cp}}, {{direccion.estado}}.</p>
+        </div>
+        <div *ngFor="let telefono of direccion.telefonos">
+         <!--  <ion-icon name="call" item-start></ion-icon> -->
+          <p>Teléfono: {{telefono.numero}}</p>
+        </div>
+        <div>
+         <!--  <ion-icon name="at" item-start></ion-icon> -->
+          <p>E-mail:{{direccion.email}}</p>
+        </div>
       </div>
-
-
-      <ion-fab top right edge>
-        <button ion-fab mini>
-          <ion-icon name="add"></ion-icon>
-        </button>
-        <ion-fab-list>
-          <button ion-fab>
-            <ion-icon name="logo-facebook"></ion-icon>
-          </button>
-          <button ion-fab>
-            <ion-icon name="logo-twitter"></ion-icon>
-          </button>
-          <button ion-fab>
-            <ion-icon name="logo-vimeo"></ion-icon>
-          </button>
-          <button ion-fab>
-            <ion-icon name="logo-googleplus"></ion-icon>
-          </button>
-        </ion-fab-list>
-      </ion-fab>
 
 
     </ion-card-content>

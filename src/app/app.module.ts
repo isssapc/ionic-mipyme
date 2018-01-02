@@ -3,7 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { AgmCoreModule } from '@agm/core';
 
+//components
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AnuncioProvider } from '../providers/anuncio/anuncio';
@@ -24,7 +26,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googlemaps
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

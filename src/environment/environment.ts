@@ -7,5 +7,6 @@ export const environment = {
         projectId: "mipymeapp",
         storageBucket: "mipymeapp.appspot.com",
         messagingSenderId: "183654207423"
-    }
+    },
+    googlemaps:"AIzaSyCBz_xvpIA0o8EDoqBraDXYuKakgBQzuFY"
 };

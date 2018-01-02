@@ -5,12 +5,27 @@
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>Anuncios</ion-title>
+
+    <ion-buttons right>
+      <button ion-button (click)="gotoPage('PedidoPage')">
+        <ion-icon name="cart" margin-right></ion-icon>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+<!--   <ion-fab bottom right>
+    <button ion-fab (click)="gotoPage('PedidoPage')">
+      <ion-icon name="cart"></ion-icon>
+    </button>
+  </ion-fab> -->
 
   <ion-card *ngFor="let anuncio of anuncios|async">
 
@@ -27,10 +42,10 @@
     <ion-card-content text-center>
       <p>{{anuncio.descripcion}}</p>
       <h3>
-        <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado}}}</span>
-        <span>{{anuncio.precio}}}</span>
+        <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado}}</span>
+        <span>{{anuncio.precio}}</span>
       </h3>
-      <!-- <h3>{{anuncio.precio}}</h3> -->
+      
       <!-- <p>{{anuncio.categoria}}</p> -->
 
     </ion-card-content>
