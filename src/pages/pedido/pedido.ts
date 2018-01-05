@@ -126,12 +126,12 @@ export class PedidoPage {
     let modal = this.modalCtrl.create(ModalConfirmacionPedidoPage);
     modal.present();
   }
-  
 
-  slidingEliminar(producto){
+
+  slidingEliminar(producto) {
     console.log("eliminar producto", producto);
     let i = this.pedido.indexOf(producto);
-              this.pedido.splice(i, 1);
+    this.pedido.splice(i, 1);
   }
 
 
