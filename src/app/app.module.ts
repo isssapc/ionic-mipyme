@@ -17,6 +17,7 @@ import { environment } from "../environment/environment";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ModalConfirmacionPedidoPage } from '../pages/modal-confirmacion-pedido/modal-confirmacion-pedido';
+import { PedidoProvider } from '../providers/pedido/pedido';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalConfirmacionPedidoPage } from '../pages/modal-confirmacion-pedido/
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AnuncioProvider
+    AnuncioProvider,
+    PedidoProvider
   ]
 })
 export class AppModule { }
