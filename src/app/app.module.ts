@@ -16,11 +16,13 @@ import { environment } from "../environment/environment";
 //firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ModalConfirmacionPedidoPage } from '../pages/modal-confirmacion-pedido/modal-confirmacion-pedido';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalConfirmacionPedidoPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalConfirmacionPedidoPage
   ],
   providers: [
     StatusBar,

@@ -2,48 +2,55 @@
 
   <ion-navbar>
     <ion-title>Pedido</ion-title>
-  </ion-navbar>
 
+    <ion-buttons right>
+      <button ion-button (click)="confirmarPedido()">
+        Confirmar
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content>
 
- 
+
 
   <ion-list no-lines>
 
-    <ion-item *ngFor="let pedido of pedidos">
+    <ion-item *ngFor="let producto of pedido">
+
       <ion-thumbnail item-start>
-        <img src="assets/imgs/logo.png">
+        <img [src]="producto.thumb_url||'assets/imgs/logo.png'">
       </ion-thumbnail>
-      <h4>{{pedido.producto | uppercase}}</h4>
+      <h4>{{producto.titulo | uppercase}}</h4>
       <!--  <p>Talla M</p> -->
 
       <ion-row justify-content-end>
         <ion-col col-auto align-self-center>
-          <button ion-button clear icon-only (click)="disminuirCantidad(pedido)">
+          <button ion-button clear icon-only (click)="disminuirCantidad(producto)">
             <ion-icon name="arrow-back"></ion-icon>
           </button>
         </ion-col>
 
         <ion-col align-self-center col-auto>
-          <div>{{pedido.cantidad}}</div>
+          <div>{{producto.cantidad}}</div>
         </ion-col>
 
         <ion-col col-auto align-self-center>
-          <button ion-button clear icon-only (click)="aumentarCantidad(pedido)">
+          <button ion-button clear icon-only (click)="aumentarCantidad(producto)">
             <ion-icon name="arrow-forward"></ion-icon>
           </button>
         </ion-col>
         <ion-col text-right align-self-center>
-          <p>{{pedido.cantidad}} x $1,000.00</p>
-          <p>{{pedido.precio}}</p>
+          <p *ngIf="producto.cantidad>1">{{producto.cantidad}} x {{producto.precio|currency}} </p>
+          <p>{{producto.cantidad*producto.precio|currency}}</p>
         </ion-col>
       </ion-row>
       <!--      <ion-row>
         <ion-col text-right>
-          <p>{{pedido.precio}}</p>
+          <p>{{producto.precio}}</p>
         </ion-col>
       </ion-row> -->
 
@@ -52,24 +59,16 @@
 
   </ion-list>
 
-
-
-
-
-
-
-
-
 </ion-content>
 <ion-footer>
   <ion-toolbar>
 
     <ion-row>
       <ion-col>
-        Articulos: 1
+        Articulos: {{cantidadProductos()}}
       </ion-col>
       <ion-col text-right>
-        Total: $1,000.00
+        Total: {{totalProductos()|currency}}
       </ion-col>
     </ion-row>
 

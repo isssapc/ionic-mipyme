@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AnuncioProvider } from '../../providers/anuncio/anuncio';
-import { Observable } from 'rxjs/Observable';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { ModalConfirmacionPedidoPage } from '../modal-confirmacion-pedido/modal-confirmacion-pedido';
+//import { AnuncioProvider } from '../../providers/anuncio/anuncio';
 
-/**
- * Generated class for the PedidoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,65 +10,124 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'pedido.html',
 })
 export class PedidoPage {
-  pedidos: any = [
+
+  pedido: any[] = []; /* [
+    
     {
       producto: "playera polo para caballero",
-      precio: "$500.00",
+      precio: "500.00",
       cantidad: 1
     },
     {
       producto: "zapato casual",
-      precio: "$950.00",
+      precio: "950.00",
       cantidad: 1
 
     },
     {
       producto: "pantalón mezclilla para caballero",
-      precio: "$900.00",
+      precio: "900.00",
       cantidad: 1
 
     },
     {
       producto: "playera deportiva",
-      precio: "$430.00",
+      precio: "430.00",
       cantidad: 1
 
     },
     {
       producto: "playera deportiva",
-      precio: "$430.00",
+      precio: "430.00",
       cantidad: 1
 
     },
     {
       producto: "playera deportiva",
-      precio: "$430.00",
-      cantidad: 1
+      precio: "430.00",
+      cantidad: 1,      
 
-    }
-  ]
+    },
+
+    
+    
+  ] */
 
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private anuncioSrv: AnuncioProvider) {
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
+    //private anuncioSrv: AnuncioProvider
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedidoPage');
+    let paramPedido = this.navParams.get("pedido");
+    if (paramPedido) {
+      this.pedido = paramPedido;
+    }
+
   }
 
-  disminuirCantidad(pedido) {
-    if (pedido.cantidad > 0) {
-      pedido.cantidad = pedido.cantidad - 1
+  disminuirCantidad(producto) {
+    if (producto.cantidad == 1) {
+      let alert = this.alertCtrl.create({
+        title: 'Eliminar Producto',
+        subTitle: 'Seguro que quiere eliminar el producto',
+        buttons: [
+          {
+            text: 'Cancelar',
+            handler: () => {
+              console.log('Cancelar clicked');
+            }
+          },
+          {
+            text: 'Aceptar',
+            handler: () => {
+              console.log('Aceptar clicked');
+              let i = this.pedido.indexOf(producto);
+              this.pedido.splice(i, 1);
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+    else if (producto.cantidad > 1) {
+      producto.cantidad = producto.cantidad - 1;
     }
   }
 
-  aumentarCantidad(pedido) {
-    pedido.cantidad = pedido.cantidad + 1
+  aumentarCantidad(producto) {
+    producto.cantidad = producto.cantidad + 1;
 
   }
+
+  cantidadProductos() {
+    let cantidad = 0;
+    this.pedido.forEach(producto => {
+      cantidad = cantidad + producto.cantidad;
+    });
+    return cantidad;
+  }
+
+  totalProductos() {
+    let total = 0;
+    this.pedido.forEach(producto => {
+      total = total + (producto.cantidad * producto.precio);
+    });
+    return total;
+  }
+
+  confirmarPedido() {
+    let modal = this.modalCtrl.create(ModalConfirmacionPedidoPage);
+    modal.present();
+  }
+
+
 
 
 
