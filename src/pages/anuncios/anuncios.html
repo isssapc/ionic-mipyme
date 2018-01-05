@@ -8,8 +8,11 @@
 
     <ion-buttons right>
       <button ion-button (click)="gotoPedidoPage()">
-        <ion-icon name="cart" margin-right></ion-icon>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-badge color="primary" [style.margin.px]="5">{{pedido.length}}</ion-badge>
+        
+     <!--    margin-right -->
+        <ion-icon name="cart" ></ion-icon>
+       <!--  <ion-icon name="arrow-forward"></ion-icon> -->
       </button>
     </ion-buttons>
 
@@ -21,7 +24,7 @@
 
 <ion-content padding>
 
-<!--   <ion-fab bottom right>
+  <!--   <ion-fab bottom right>
     <button ion-fab (click)="gotoPage('PedidoPage')">
       <ion-icon name="cart"></ion-icon>
     </button>
@@ -45,7 +48,7 @@
         <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado}}</span>
         <span>{{anuncio.precio}}</span>
       </h3>
-      
+
       <!-- <p>{{anuncio.categoria}}</p> -->
 
     </ion-card-content>
