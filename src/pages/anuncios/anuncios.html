@@ -7,7 +7,7 @@
     <ion-title>Anuncios</ion-title>
 
     <ion-buttons right>
-      <button ion-button (click)="gotoPage('PedidoPage')">
+      <button ion-button (click)="gotoPedidoPage()">
         <ion-icon name="cart" margin-right></ion-icon>
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
@@ -27,7 +27,7 @@
     </button>
   </ion-fab> -->
 
-  <ion-card *ngFor="let anuncio of anuncios|async">
+  <ion-card *ngFor="let anuncio of anuncios">
 
     <ion-item>
       <ion-avatar item-start>
@@ -37,7 +37,7 @@
       <p>{{anuncio.fecha_publicacion}}</p>
     </ion-item>
 
-    <img [src]="anuncio.img_src">
+    <img [src]="anuncio.thumb_url">
 
     <ion-card-content text-center>
       <p>{{anuncio.descripcion}}</p>
@@ -51,7 +51,7 @@
     </ion-card-content>
 
     <div text-right>
-      <button ion-button icon-right clear small>
+      <button ion-button icon-right clear small (click)="agregarAlPedido(anuncio)">
         <div>Agregar</div>
         <ion-icon name="cart"></ion-icon>
       </button>

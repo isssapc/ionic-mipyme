@@ -11,7 +11,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AnunciosPage {
 
-  anuncios: Observable<any[]>;/*  [
+  pedido: any[] = [];
+
+  anuncios: any[];/*  [
     {
       titulo: "Pants Deportivos",
       descripcion: "Alta resistencia e ideal para deportes",
@@ -51,15 +53,29 @@ export class AnunciosPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnunciosPage');
 
-    this.anuncios = this.anuncioSrv.getAnuncios();
+    this.anuncioSrv.getAnuncios()
+      .subscribe(anuncios => {
+        this.anuncios = anuncios;
+      });
 
 
   }
 
-  gotoPage(page) {
+  gotoPedidoPage() {
     console.log("gotoPagePedidos");
+
+    this.navCtrl.push('PedidoPage', { pedido: this.pedido });
+  }
+
+  agregarAlPedido(producto) {
+
+    console.log("agregado al pedido", producto);
     
-    this.navCtrl.push(page);
+
+    producto.cantidad = 1;
+
+    this.pedido.push(producto);
+
   }
 
 }
