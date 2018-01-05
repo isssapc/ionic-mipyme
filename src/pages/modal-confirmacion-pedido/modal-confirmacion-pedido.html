@@ -18,11 +18,29 @@
   <ion-card>
 
     <ion-card-header>
-      Datos del Clientos
+      Datos del Cliente
     </ion-card-header>
 
     <ion-card-content>
-      <button ion-button>Aceptar</button>
+
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Nombre</ion-label>
+          <ion-input type="text" name="nombre" [(ngModel)]="cliente.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text"  name="email" [(ngModel)]="cliente.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Número</ion-label>
+          <ion-input type="text" name="numero" [(ngModel)]="cliente.numero"></ion-input>
+        </ion-item>
+      </ion-list>
+
+
+
+      <button ion-button (click)="crearPedido()">Aceptar</button>
     </ion-card-content>
 
   </ion-card>

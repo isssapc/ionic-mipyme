@@ -45,8 +45,8 @@
     <ion-card-content text-center>
       <p>{{anuncio.descripcion}}</p>
       <h3>
-        <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado}}</span>
-        <span>{{anuncio.precio}}</span>
+        <span style="text-decoration:line-through" class="text-danger">{{anuncio.precio_tachado|currency}}</span>
+        <span>{{anuncio.precio|currency}}</span>
       </h3>
 
       <!-- <p>{{anuncio.categoria}}</p> -->

@@ -123,8 +123,11 @@ export class PedidoPage {
   }
 
   confirmarPedido() {
-    let modal = this.modalCtrl.create(ModalConfirmacionPedidoPage);
+    let modal = this.modalCtrl.create(ModalConfirmacionPedidoPage, {
+      pedido: this.pedido
+    });
     modal.present();
+
   }
 
 
