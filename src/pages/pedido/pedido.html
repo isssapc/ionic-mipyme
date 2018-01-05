@@ -19,44 +19,49 @@
 
   <ion-list no-lines>
 
-    <ion-item *ngFor="let producto of pedido">
+    <ion-item-sliding *ngFor="let producto of pedido">
+      <ion-item>
 
-      <ion-thumbnail item-start>
-        <img [src]="producto.thumb_url||'assets/imgs/logo.png'">
-      </ion-thumbnail>
-      <h4>{{producto.titulo | uppercase}}</h4>
-      <!--  <p>Talla M</p> -->
+        <ion-thumbnail item-start>
+          <img [src]="producto.thumb_url||'assets/imgs/logo.png'">
+        </ion-thumbnail>
+        <h4>{{producto.titulo | uppercase}}</h4>
+        <!--  <p>Talla M</p> -->
 
-      <ion-row justify-content-end>
-        <ion-col col-auto align-self-center>
-          <button ion-button clear icon-only (click)="disminuirCantidad(producto)">
-            <ion-icon name="arrow-back"></ion-icon>
-          </button>
-        </ion-col>
+        <ion-row justify-content-end>
+          <ion-col col-auto align-self-center>
+            <button ion-button clear icon-only (click)="disminuirCantidad(producto)">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-col>
 
-        <ion-col align-self-center col-auto>
-          <div>{{producto.cantidad}}</div>
-        </ion-col>
+          <ion-col align-self-center col-auto>
+            <div>{{producto.cantidad}}</div>
+          </ion-col>
 
-        <ion-col col-auto align-self-center>
-          <button ion-button clear icon-only (click)="aumentarCantidad(producto)">
-            <ion-icon name="arrow-forward"></ion-icon>
-          </button>
-        </ion-col>
-        <ion-col text-right align-self-center>
-          <p *ngIf="producto.cantidad>1">{{producto.cantidad}} x {{producto.precio|currency}} </p>
-          <p>{{producto.cantidad*producto.precio|currency}}</p>
-        </ion-col>
-      </ion-row>
-      <!--      <ion-row>
+          <ion-col col-auto align-self-center>
+            <button ion-button clear icon-only (click)="aumentarCantidad(producto)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col text-right align-self-center>
+            <p *ngIf="producto.cantidad>1">{{producto.cantidad}} x {{producto.precio|currency}} </p>
+            <p>{{producto.cantidad*producto.precio|currency}}</p>
+          </ion-col>
+        </ion-row>
+        <!--      <ion-row>
         <ion-col text-right>
           <p>{{producto.precio}}</p>
         </ion-col>
       </ion-row> -->
-
-
-    </ion-item>
-
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="slidingEliminar(producto)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
 </ion-content>
