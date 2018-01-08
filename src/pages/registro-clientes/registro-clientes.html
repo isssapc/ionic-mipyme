@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Registro</ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="cerrar()">
+        Cancelar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nombre</ion-label>
+      <ion-input type="text" name="nombre" [(ngModel)]="cliente.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="cliente.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Número</ion-label>
+      <ion-input type="number" name="numero" [(ngModel)]="cliente.numero"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="cliente.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Direccion de Envío</ion-label>
+      <ion-textarea type="text" name="direccion" [(ngModel)]="cliente.direccion"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full (click)="crearCliente()">Aceptar</button>
+
+</ion-content>
