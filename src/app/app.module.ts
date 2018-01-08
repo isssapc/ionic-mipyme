@@ -18,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ModalConfirmacionPedidoPage } from '../pages/modal-confirmacion-pedido/modal-confirmacion-pedido';
 import { PedidoProvider } from '../providers/pedido/pedido';
+import { RegistroClientesPage } from '../pages/registro-clientes/registro-clientes';
+import { ClienteProvider } from '../providers/cliente/cliente';
 
 @NgModule({
   declarations: [
@@ -38,14 +40,17 @@ import { PedidoProvider } from '../providers/pedido/pedido';
   entryComponents: [
     MyApp,
     HomePage,
-    ModalConfirmacionPedidoPage
+    ModalConfirmacionPedidoPage,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AnuncioProvider,
-    PedidoProvider
+    PedidoProvider,
+    ClienteProvider
+    
   ]
 })
 export class AppModule { }
