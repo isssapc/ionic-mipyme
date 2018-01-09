@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { ModalConfirmacionPedidoPage } from '../modal-confirmacion-pedido/modal-confirmacion-pedido';
+import { AnunciosPage } from '../anuncios/anuncios';
 //import { AnuncioProvider } from '../../providers/anuncio/anuncio';
 
 
@@ -11,47 +12,7 @@ import { ModalConfirmacionPedidoPage } from '../modal-confirmacion-pedido/modal-
 })
 export class PedidoPage {
 
-  pedido: any[] = []; /* [
-    
-    {
-      producto: "playera polo para caballero",
-      precio: "500.00",
-      cantidad: 1
-    },
-    {
-      producto: "zapato casual",
-      precio: "950.00",
-      cantidad: 1
-
-    },
-    {
-      producto: "pantalón mezclilla para caballero",
-      precio: "900.00",
-      cantidad: 1
-
-    },
-    {
-      producto: "playera deportiva",
-      precio: "430.00",
-      cantidad: 1
-
-    },
-    {
-      producto: "playera deportiva",
-      precio: "430.00",
-      cantidad: 1
-
-    },
-    {
-      producto: "playera deportiva",
-      precio: "430.00",
-      cantidad: 1,      
-
-    },
-
-    
-    
-  ] */
+  pedido: any[] = [];
 
 
   constructor(
@@ -126,7 +87,24 @@ export class PedidoPage {
     let modal = this.modalCtrl.create(ModalConfirmacionPedidoPage, {
       pedido: this.pedido
     });
+
+/*     modal.onDidDismiss(confirmacion => {
+
+      console.log("confirmacion", confirmacion);
+
+
+      if (confirmacion) {
+        this.pedido = [];
+        this.navCtrl.popTo(AnunciosPage,{});
+      } else {
+
+      }
+
+    }); */
+
     modal.present();
+
+
 
   }
 

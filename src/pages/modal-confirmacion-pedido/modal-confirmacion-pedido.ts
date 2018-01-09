@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController, AlertController, App } from 'ionic-angular';
 import { PedidoProvider } from '../../providers/pedido/pedido';
+import { AnunciosPage } from '../anuncios/anuncios';
 
 
 @IonicPage()
@@ -22,7 +23,8 @@ export class ModalConfirmacionPedidoPage {
     public viewCtrl: ViewController,
     public navParams: NavParams,
     private pedidoSrv: PedidoProvider,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public appCtrl: App) {
   }
 
   ionViewDidLoad() {
@@ -31,24 +33,38 @@ export class ModalConfirmacionPedidoPage {
   }
 
   cerrar() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(false);
   }
 
   crearPedido() {
     let alert = this.alertCtrl.create({
       title: 'Pedido Realizado',
       subTitle: 'Su pedido ha sido enviado',
-      buttons: ['OK']
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.viewCtrl.dismiss();
+            this.appCtrl.getRootNav().push(AnunciosPage);
+
+          }
+        }
+      ]
     });
-    alert.present();
+
     let pedido = {
       cliente_nombre: this.cliente.nombre,
       cliente_email: this.cliente.email,
       cliente_numero: this.cliente.numero,
       productos: this.pedido,
     };
+
     console.log("Pedido OK", pedido);
-    this.pedidoSrv.createPedido(pedido);
+    this.pedidoSrv.createPedido(pedido).then(() => {
+      alert.present();
+      this.pedido = [];
+    });
+
   }
 
 

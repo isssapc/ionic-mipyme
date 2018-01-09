@@ -12,8 +12,13 @@ export class PedidoProvider {
 
 
   createPedido(pedido) {
-    let pedidos = this.db.collection<any>("pedidos");
-    return pedidos.add(pedido);
+    let id = this.db.createId();
+    pedido.id = id;
+
+    return this.db.doc("pedidos/"+id).set(pedido);
+
+    //let pedidos = this.db.collection<any>("pedidos");
+    //return pedidos.add(pedido);
   }
 
 }
